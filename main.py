@@ -79,10 +79,11 @@ def create_overlay(corners, image_path):
     return loaded_image
 
 if __name__ == "__main__":
-    # configurable variables
-    threshold = 0.2
+
+    # configurable parameters
+    threshold = 0.15
     k = 0.05
-    window_radius = 1
+    window_radius = 2
 
     # load image
     sys.argv.append("")
@@ -92,7 +93,7 @@ if __name__ == "__main__":
         image_path = "./images/checkerboard.png"
 
 
-    image_name = image_path.split("/")[-1]
+    image_name = image_path.split("/")[-1].split(".")[0]
     print("image path:", image_path)
 
     # calculate values

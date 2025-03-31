@@ -1,37 +1,36 @@
-Summary:
 The Harris corner detector is a computer vision algorithm used to identify key features (corners) in an image. 
 This program detects corners, overlays them on the original image, and saves the processed results.
+ 
 
 Features:
 - Identifies corners and marks their locations
 - Saves images in the output folder
 - Displays key parameters used in the algorithm
+- Full error handling, including fallback image
+ 
 
-Algorithm:
-- Calculates spatial derivatives in the X and Y directions
-- Constructs a structure tensor matrix
+Process:
+- Calculate spatial derivatives in the X and Y directions
+- Build the structure tensor matrix
 - Calculate Harris response using the structure tensor
-- Identify local maximum values
+- Identify relative maximum values
 - Overlay these values onto the original image
+- Save and display results
+ 
 
-Usage:
-- Takes a command line parameter for image path
-- Works with all major image formats
-- Has a fallback test image
-
-Default Image:
+Usage (default image):
 ```
 python3 main.py
 ```
+ 
 
-Custom Image:
+Usage (custom image):
 ```
-python3 main.py ./path/to/an/image
+python3 main.py ./path/to/an/image.png
 ```
+ 
 
-Requirements:
-- python3
-- numpy
-- opencv2
+Note: Requires python, opencv2, and numpy installed.
+ 
 
 2025
