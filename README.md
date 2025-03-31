@@ -1,4 +1,4 @@
-The Harris corner detector is a computer vision algorithm used to identify key features (corners) in an image. 
+The Harris corner detector is a computer vision algorithm used to identify key features in an image. 
 This program detects corners, overlays them on the original image, and saves the processed results.
  
 
@@ -12,7 +12,7 @@ Features:
 Process:
 - Calculate spatial derivatives in the X and Y directions
 - Build the structure tensor matrix
-- Calculate Harris response using the structure tensor
+- Calculate the Harris response using the structure tensor
 - Identify relative maximum values
 - Overlay these values onto the original image
 - Save and display results
