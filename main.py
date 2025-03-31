@@ -79,25 +79,37 @@ def create_overlay(corners, image_path):
     return loaded_image
 
 if __name__ == "__main__":
-    # variables
-    image_name = "checkerboard.png"
-    # image must be in ./images
-    image_path = f"./images/{image_name}"
+    # configurable variables
     threshold = 0.2
     k = 0.05
     window_radius = 1
-    # computation
+
+    # load image
+    sys.argv.append("")
+    image_path = sys.argv[1]
+    if (cv2.imread(image_path) is None):
+        print("unable to open specified image, using default.")
+        image_path = "./images/checkerboard.png"
+
+
+    image_name = image_path.split("/")[-1]
+    print("image path:", image_path)
+
+    # calculate values
     cornerness = calculate_cornerness(image_path, k, window_radius)
     corners = find_corners(cornerness, threshold)
     overlay = create_overlay(corners, image_path)
+
     # display results
     cv2.imshow("final image", overlay)
     cv2.waitKey(0)
+
+    # write image to ./output
     try:
         cv2.imwrite(f"output/{image_name}_{k}_{window_radius}_{threshold}.png", overlay)
         print("successfully wrote to ./output.")
         print("\ngeneration info:")
-        print(f"image_name: {image_name}\nk: {k}\nwindow_radius: {window_radius}\nthreshold: {threshold}\n")
+        print(f"image_name: {image_name}\nk: {k}\nwindow_radius: {window_radius}\nthreshold: {threshold}")
     except Exception as e:
         print("failed to write to ./output.")
         raise e;
